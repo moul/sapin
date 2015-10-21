@@ -1,6 +1,11 @@
 package sapin
 
-import "math/rand"
+import (
+	"math/rand"
+	"strings"
+
+	"github.com/mgutz/ansi"
+)
 
 // Sapin is the structure defining a sapin.
 type Sapin struct {
@@ -101,4 +106,12 @@ func (s *Sapin) AddBalls(percent int) {
 		}
 	}
 	s.output = string(slc)
+}
+
+func (s *Sapin) Colorize() {
+	s.compute()
+
+	s.output = strings.Replace(s.output, "@", ansi.Color("@", "red+bh"), -1)
+	s.output = strings.Replace(s.output, "*", ansi.Color("*", "green+bh"), -1)
+	s.output = strings.Replace(s.output, "|", ansi.Color("|", "90+buh"), -1)
 }

@@ -6,6 +6,7 @@ sapin: ./cmd/sapin/main.go ./sapin.go
 
 
 sapin.js: ./cmd/sapinjs/main.go ./sapin.go
+	go get github.com/gopherjs/gopherjs
 	gopherjs build -o $@ ./cmd/sapinjs/main.go
 
 
