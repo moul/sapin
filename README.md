@@ -2,11 +2,11 @@
 :christmas_tree: drawing a christmas tree in Go
 
 [![GoDoc](https://godoc.org/github.com/moul/go-sapin?status.svg)](https://godoc.org/github.com/moul/go-sapin)
-[![](https://img.shields.io/badge/appspot-sapin-blue.svg)](http://sapin-as-a-service.appspot.com/?size=5)
+[![](https://img.shields.io/badge/appspot-sapin--as--a--service-blue.svg)](http://sapin-as-a-service.appspot.com/)
 
 ## Demo
 
-http://sapin-as-a-service.appspot.com/?size=5
+http://sapin-as-a-service.appspot.com/
 
 ## Usage
 
