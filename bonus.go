@@ -30,6 +30,7 @@ func (s *Sapin) Colorize() {
 	s.output = strings.Replace(s.output, "*", ansi.Color("*", fmt.Sprintf("green+%s", s.ColorOpts)), -1)
 	s.output = strings.Replace(s.output, "|", ansi.Color("|", fmt.Sprintf("90+%s", s.ColorOpts)), -1)
 	s.output = strings.Replace(s.output, "#", ansi.Color("#", fmt.Sprintf("yellow+%s", s.ColorOpts)), -1)
+	s.output = strings.Replace(s.output, "~", ansi.Color("~", fmt.Sprintf("yellow+%s", s.ColorOpts)), -1)
 }
 
 func (s *Sapin) Emojize() {
@@ -39,6 +40,7 @@ func (s *Sapin) Emojize() {
 	s.output = strings.Replace(s.output, "*", "🎄", -1)
 	s.output = strings.Replace(s.output, "|", "🚪", -1)
 	s.output = strings.Replace(s.output, "#", "💛", -1)
+	s.output = strings.Replace(s.output, "~", "🔸", -1)
 }
 
 func (s *Sapin) AddStar() {
@@ -55,6 +57,51 @@ func (s *Sapin) AddPresents() {
 		lines[len(lines)-4] += "   _8_8_"
 		lines[len(lines)-3] += "  |  |  |_8_"
 		lines[len(lines)-2] += "  |__|__|___|"
+		s.output = strings.Join(lines, "\n")
+	}
+}
+
+func (s *Sapin) AddGarlands(quantity int) {
+	s.compute()
+
+	if s.Size < 2 {
+		return
+	}
+
+	bodySize := s.GetBodySize()
+
+	for garland := 0; garland < quantity; garland++ {
+		lines := strings.Split(s.output, "\n")
+
+		stop := false
+		direction := 1
+		if rand.Intn(2) > 0 {
+			direction = direction * -1
+		}
+		y := rand.Intn(bodySize-6) + 3
+		baseX := strings.Count(lines[y], " ")
+		for ; !stop; y += direction {
+			line := []byte(lines[y])
+			for x := baseX; x < baseX+2; x++ {
+
+				if x >= len(lines[y]) {
+					stop = true
+					break
+				}
+				switch lines[y][x] {
+				case 32, 124: // ' ', '|'
+					stop = true
+				}
+				if stop {
+					break
+				}
+
+				line[x] = 126 // ~
+			}
+			lines[y] = string(line)
+			baseX += 2
+		}
+
 		s.output = strings.Join(lines, "\n")
 	}
 }

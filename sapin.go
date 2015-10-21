@@ -36,6 +36,17 @@ func (s *Sapin) GetMaxSize() int {
 	return s.GetLineSize(s.Size-1, s.Size+3)
 }
 
+func triangularNumber(x int) int {
+	if x == 0 {
+		return 0
+	}
+	return x + triangularNumber(x-1)
+}
+
+func (s *Sapin) GetBodySize() int {
+	return 4*s.Size + triangularNumber(s.Size-1)
+}
+
 // compute iterates over floors and lines to generate the output of the sapin.
 func (s *Sapin) compute() {
 	if s.output != "" {

@@ -18,6 +18,7 @@ func init() {
 type Options struct {
 	Size     int  `schema:"size"`
 	Balls    int  `schema:"balls"`
+	Garlands int  `schema:"garlands"`
 	Star     bool `schema:"star"`
 	Emoji    bool `schema:"emoji"`
 	Color    bool `schema:"color"`
@@ -56,7 +57,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	// check if no arguments
 	if len(m) == 0 {
-		http.Redirect(w, r, "?size=5&balls=4&star=true&emoji=false&color=false&presents=true", http.StatusFound)
+		http.Redirect(w, r, "?size=5&balls=4&star=true&emoji=false&color=false&presents=true&garlands=5", http.StatusFound)
 	}
 
 	// unmarshal arguments
@@ -86,12 +87,21 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Max value for balls is 100\n")
 		return
 	}
+	if opts.Garlands < 0 {
+		fmt.Fprintf(w, "Min value for garlands is 0\n")
+		return
+	}
+	if opts.Garlands > 50 {
+		fmt.Fprintf(w, "Max value for garlands is 50\n")
+		return
+	}
 
 	sapin := sapin.NewSapin(opts.Size)
 	if opts.Star {
 		sapin.AddStar()
 	}
 	sapin.AddBalls(opts.Balls)
+	sapin.AddGarlands(opts.Garlands)
 	if opts.Emoji {
 		sapin.Emojize()
 	}

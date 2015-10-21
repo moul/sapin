@@ -275,3 +275,12 @@ func TestSapin_String(t *testing.T) {
 		})
 	})
 }
+
+func TestTriangularNumber(t *testing.T) {
+	Convey("Testint triangularNumber()", t, func() {
+		So(triangularNumber(3), ShouldEqual, 6)
+		So(triangularNumber(4), ShouldEqual, 10)
+		So(triangularNumber(1), ShouldEqual, 1)
+		So(triangularNumber(0), ShouldEqual, 0)
+	})
+}

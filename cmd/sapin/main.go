@@ -12,7 +12,8 @@ import (
 
 var opts struct {
 	Size     int  `short:"s" long:"size" description:"Size of the sapin" default:"5"`
-	Balls    int  `long:"balls" description:"Percent of balls" default:"10"`
+	Balls    int  `long:"balls" description:"Percent of balls" default:"4"`
+	Garlands int  `long:"garlands" description:"Add some garlands"`
 	Color    bool `short:"c" long:"color" description:"Colorize output"`
 	Star     bool `long:"star" description:"Add top star"`
 	Emoji    bool `short:"e" long:"emoji" description:"Use emojis"`
@@ -30,6 +31,7 @@ func main() {
 			sapin.AddStar()
 		}
 		sapin.AddBalls(opts.Balls)
+		sapin.AddGarlands(opts.Garlands)
 		if opts.Emoji {
 			sapin.Emojize()
 		}
