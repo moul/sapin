@@ -14,6 +14,7 @@ var opts struct {
 	Size  int  `short:"s" long:"size" description:"Size of the sapin" default:"5"`
 	Balls int  `long:"balls" description:"Percent of balls" default:"10"`
 	Color bool `short:"c" long:"color" description:"Colorize output"`
+	Star  bool `long:"star" description:"Add top star"`
 }
 
 func init() {
@@ -23,6 +24,9 @@ func init() {
 func main() {
 	if _, err := flags.Parse(&opts); err == nil {
 		sapin := sapin.NewSapin(opts.Size)
+		if opts.Star {
+			sapin.AddStar()
+		}
 		sapin.AddBalls(opts.Balls)
 		if opts.Color {
 			sapin.Colorize()

@@ -114,4 +114,11 @@ func (s *Sapin) Colorize() {
 	s.output = strings.Replace(s.output, "@", ansi.Color("@", "red+bh"), -1)
 	s.output = strings.Replace(s.output, "*", ansi.Color("*", "green+bh"), -1)
 	s.output = strings.Replace(s.output, "|", ansi.Color("|", "90+buh"), -1)
+	s.output = strings.Replace(s.output, "#", ansi.Color("#", "yellow+bh"), -1)
+}
+
+func (s *Sapin) AddStar() {
+	s.compute()
+
+	s.output = strings.Replace(s.output, "*", "#", 1)
 }
