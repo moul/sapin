@@ -46,3 +46,15 @@ func (s *Sapin) AddStar() {
 
 	s.output = strings.Replace(s.output, "*", "#", 1)
 }
+
+func (s *Sapin) AddPresents() {
+	s.compute()
+
+	if s.Size > 3 {
+		lines := strings.Split(s.output, "\n")
+		lines[len(lines)-4] += "   _8_8_"
+		lines[len(lines)-3] += "  |  |  |_8_"
+		lines[len(lines)-2] += "  |__|__|___|"
+		s.output = strings.Join(lines, "\n")
+	}
+}

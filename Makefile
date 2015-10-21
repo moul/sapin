@@ -1,4 +1,4 @@
-SOURCES = sapin.go
+SOURCES = sapin.go bonus.go
 
 all: sapin sapin.js
 

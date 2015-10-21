@@ -11,11 +11,12 @@ import (
 )
 
 var opts struct {
-	Size  int  `short:"s" long:"size" description:"Size of the sapin" default:"5"`
-	Balls int  `long:"balls" description:"Percent of balls" default:"10"`
-	Color bool `short:"c" long:"color" description:"Colorize output"`
-	Star  bool `long:"star" description:"Add top star"`
-	Emoji bool `short:"e" long:"emoji" description:"Use emojis"`
+	Size     int  `short:"s" long:"size" description:"Size of the sapin" default:"5"`
+	Balls    int  `long:"balls" description:"Percent of balls" default:"10"`
+	Color    bool `short:"c" long:"color" description:"Colorize output"`
+	Star     bool `long:"star" description:"Add top star"`
+	Emoji    bool `short:"e" long:"emoji" description:"Use emojis"`
+	Presents bool `long:"presents" description:"Add presents"`
 }
 
 func init() {
@@ -35,6 +36,9 @@ func main() {
 		if opts.Color {
 			sapin.ColorOpts = "bh"
 			sapin.Colorize()
+		}
+		if opts.Presents {
+			sapin.AddPresents()
 		}
 		fmt.Print(sapin.String())
 		os.Exit(0)
