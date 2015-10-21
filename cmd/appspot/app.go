@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
+	"strings"
 
+	"github.com/buildkite/terminal"
 	"github.com/gorilla/schema"
 	"github.com/moul/go-sapin"
 )
@@ -18,11 +20,25 @@ type Options struct {
 	Balls int  `schema:"balls"`
 	Star  bool `schema:"star"`
 	Emoji bool `schema:"emoji"`
+	Color bool `schema:"color"`
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+var htmlTemplate = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sapin</title>
+    <meta charset="UTF-8" />
+    <link type="text/css" rel="stylesheet" href="terminal.css" media="all" />
+  </head>
+  <body bgcolor="#171717">
+    <div class="term-container">&nbsp;
+CONTENT</div>
+  </body>
+</html>
+`
 
+func handler(w http.ResponseWriter, r *http.Request) {
 	// extract query from url
 	u, err := url.Parse(r.URL.String())
 	if err != nil {
@@ -39,7 +55,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	// check if no arguments
 	if len(m) == 0 {
-		http.Redirect(w, r, "?size=5&balls=4&star=true&emoji=false", http.StatusFound)
+		http.Redirect(w, r, "?size=5&balls=4&star=true&emoji=false&color=false", http.StatusFound)
 	}
 
 	// unmarshal arguments
@@ -78,5 +94,14 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if opts.Emoji {
 		sapin.Emojize()
 	}
-	fmt.Fprintf(w, "%s\n", sapin)
+	if opts.Color {
+		w.Header().Set("Content-Type", "text/html")
+		sapin.Colorize()
+		coloredOutput := string(terminal.Render([]byte(sapin.String())))
+		html := strings.Replace(htmlTemplate, "CONTENT", coloredOutput, 1)
+		fmt.Fprint(w, html)
+	} else {
+		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+		fmt.Fprintf(w, "%s\n", sapin)
+	}
 }

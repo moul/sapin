@@ -6,6 +6,9 @@ api_version: go1
 handlers:
 - url: /
   script: _go_app
+- url: /terminal\.css
+  static_files: static/terminal.css
+  upload: static/terminal.css
 - url: /favicon\.ico
   static_files: static/favicon.ico
   upload: static/favicon.ico

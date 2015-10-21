@@ -33,6 +33,7 @@ func main() {
 			sapin.Emojize()
 		}
 		if opts.Color {
+			sapin.ColorOpts = "bh"
 			sapin.Colorize()
 		}
 		fmt.Print(sapin.String())

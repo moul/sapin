@@ -1,6 +1,7 @@
 package sapin
 
 import (
+	"fmt"
 	"math/rand"
 	"strings"
 
@@ -9,8 +10,9 @@ import (
 
 // Sapin is the structure defining a sapin.
 type Sapin struct {
-	Size   int
-	output string
+	Size      int
+	output    string
+	ColorOpts string
 }
 
 // NewSapin returns a Sapin instance of the specified size.
@@ -111,10 +113,10 @@ func (s *Sapin) AddBalls(percent int) {
 func (s *Sapin) Colorize() {
 	s.compute()
 
-	s.output = strings.Replace(s.output, "@", ansi.Color("@", "red+bh"), -1)
-	s.output = strings.Replace(s.output, "*", ansi.Color("*", "green+bh"), -1)
-	s.output = strings.Replace(s.output, "|", ansi.Color("|", "90+buh"), -1)
-	s.output = strings.Replace(s.output, "#", ansi.Color("#", "yellow+bh"), -1)
+	s.output = strings.Replace(s.output, "@", ansi.Color("@", fmt.Sprintf("red+%s", s.ColorOpts)), -1)
+	s.output = strings.Replace(s.output, "*", ansi.Color("*", fmt.Sprintf("green+%s", s.ColorOpts)), -1)
+	s.output = strings.Replace(s.output, "|", ansi.Color("|", fmt.Sprintf("90+%s", s.ColorOpts)), -1)
+	s.output = strings.Replace(s.output, "#", ansi.Color("#", fmt.Sprintf("yellow+%s", s.ColorOpts)), -1)
 }
 
 func (s *Sapin) Emojize() {

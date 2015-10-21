@@ -40,10 +40,14 @@ clean:
 
 
 .PHONY: goapp_serve
-goapp_serve:
+goapp_serve: cmd/appspot/static/terminal.css
 	goapp serve ./cmd/appspot/app.yaml
 
 
 .PHONY: goapp_deploy
-goapp_deploy:
+goapp_deploy: cmd/appspot/static/terminal.css
 	goapp deploy -application sapin-as-a-service ./cmd/appspot/app.yaml
+
+
+cmd/appspot/static/terminal.css:
+	wget https://raw.githubusercontent.com/buildkite/terminal/master/assets/terminal.css -O $@
