@@ -1,5 +1,7 @@
 package sapin
 
+import "math/rand"
+
 // Sapin is the structure defining a sapin.
 type Sapin struct {
 	Size   int
@@ -16,9 +18,7 @@ func NewSapin(size int) *Sapin {
 // String returns the output of a sapin drawing.
 // If the sapin is too small the result will be empty.
 func (s *Sapin) String() string {
-	if s.output == "" {
-		s.compute()
-	}
+	s.compute()
 	return s.output
 }
 
@@ -39,6 +39,9 @@ func (s *Sapin) GetMaxSize() int {
 
 // compute iterates over floors and lines to generate the output of the sapin.
 func (s *Sapin) compute() {
+	if s.output != "" {
+		return
+	}
 	// size of the last line of the last floor
 	maxSize := s.GetMaxSize()
 
@@ -83,4 +86,19 @@ func (s *Sapin) compute() {
 		// new line
 		s.putchar("\n")
 	}
+}
+
+func (s *Sapin) AddBalls(percent int) {
+	s.compute()
+
+	slc := []byte(s.output)
+	for idx, i := range slc {
+		switch i {
+		case 42: // *
+			if rand.Intn(100) < percent {
+				slc[idx] = 64 // @
+			}
+		}
+	}
+	s.output = string(slc)
 }
