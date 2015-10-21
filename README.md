@@ -11,16 +11,16 @@ http://sapin-as-a-service.appspot.com/
 ## Usage
 
 ```console
-$ sapin --size=3 --balls=4 --star --emoji
+$ sapin --presents --size=5 --star --garlands=4 --color
 ```
-![](https://raw.githubusercontent.com/moul/go-sapin/master/assets/sapin-size3-balls4-star-emoji.png)
+![](https://raw.githubusercontent.com/moul/go-sapin/master/assets/sapin-size5-balls4-star-garlands4-color.png)
 
 ---
 
 ```console
-$ sapin --size=3 --balls=4 --star --color
+$ sapin --size=3 --balls=4 --star --emoji
 ```
-![](https://raw.githubusercontent.com/moul/go-sapin/master/assets/sapin-size3-balls4-star-color.png)
+![](https://raw.githubusercontent.com/moul/go-sapin/master/assets/sapin-size3-balls4-star-emoji.png)
 
 ---
 
@@ -99,7 +99,13 @@ Usage:
   sapin [OPTIONS]
 
 Application Options:
-  -s, --size= Size of the sapin
+  -s, --size=     Size of the sapin (5)
+      --balls=    Percent of balls (4)
+      --garlands= Add some garlands (4)
+  -c, --color     Colorize output
+      --star      Add top star
+  -e, --emoji     Use emojis
+      --presents  Add presents
 
 Help Options:
   -h, --help  Show this help mess
