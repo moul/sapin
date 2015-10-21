@@ -11,3 +11,11 @@ sapin.js: ./cmd/sapinjs/main.go ./sapin.go
 
 clean:
 	rm -rf sapin sapin.js sapin.js.map
+
+
+goapp_serve:
+	goapp serve ./cmd/appspot/app.yaml
+
+
+goapp_deploy:
+	goapp deploy -application sapin-as-a-service ./cmd/appspot/app.yaml
