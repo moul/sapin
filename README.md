@@ -3,6 +3,8 @@
 
 [![GoDoc](https://godoc.org/github.com/moul/go-sapin?status.svg)](https://godoc.org/github.com/moul/go-sapin)
 [![](https://img.shields.io/badge/appspot-sapin--as--a--service-blue.svg)](http://sapin-as-a-service.appspot.com/)
+[![Build Status](https://travis-ci.org/moul/go-sapin.svg?branch=master)](https://travis-ci.org/moul/go-sapin)
+[![Coverage Status](https://coveralls.io/repos/moul/go-sapin/badge.svg?branch=master&service=github)](https://coveralls.io/github/moul/go-sapin?branch=master)
 
 ## Demo
 
