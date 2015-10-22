@@ -7,6 +7,11 @@ all: sapin sapin.js
 build: sapin
 
 
+.PHONY: install
+install:
+	go install ./cmd/sapin
+
+
 .PHONY: test
 test:
 	go test -v .
