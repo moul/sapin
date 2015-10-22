@@ -27,7 +27,7 @@ cover:
 .PHONY: convey
 convey:
 	go get github.com/smartystreets/goconvey
-	goconvey -cover -port=9031 -workDir="$(pwd)" -depth=1
+	goconvey -cover -port=9031 -workDir="$(shell realpath .)" -depth=-1
 
 
 sapin: ./cmd/sapin/main.go $(SOURCES)
