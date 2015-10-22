@@ -14,6 +14,7 @@ install:
 
 .PHONY: test
 test:
+	go get -t ./...
 	go test -v .
 
 
@@ -23,7 +24,6 @@ cover:
 	go test -covermode=count -coverpkg=. -coverprofile=profile.out .
 
 
-
 .PHONY: convey
 convey:
 	go get github.com/smartystreets/goconvey
@@ -31,6 +31,7 @@ convey:
 
 
 sapin: ./cmd/sapin/main.go $(SOURCES)
+	go get ./...
 	go build -o $@ ./cmd/sapin
 
 
