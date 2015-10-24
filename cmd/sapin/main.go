@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/jessevdk/go-flags"
-	"github.com/moul/go-sapin"
+	"github.com/moul/sapin"
 )
 
 var opts struct {

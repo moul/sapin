@@ -1,10 +1,10 @@
-# go-sapin
+# sapin
 :christmas_tree: drawing a christmas tree in Go
 
-[![GoDoc](https://godoc.org/github.com/moul/go-sapin?status.svg)](https://godoc.org/github.com/moul/go-sapin)
+[![GoDoc](https://godoc.org/github.com/moul/sapin?status.svg)](https://godoc.org/github.com/moul/sapin)
 [![](https://img.shields.io/badge/appspot-sapin--as--a--service-blue.svg)](http://sapin-as-a-service.appspot.com/)
-[![Build Status](https://travis-ci.org/moul/go-sapin.svg?branch=master)](https://travis-ci.org/moul/go-sapin)
-[![Coverage Status](https://coveralls.io/repos/moul/go-sapin/badge.svg?branch=master&service=github)](https://coveralls.io/github/moul/go-sapin?branch=master)
+[![Build Status](https://travis-ci.org/moul/sapin.svg?branch=master)](https://travis-ci.org/moul/sapin)
+[![Coverage Status](https://coveralls.io/repos/moul/sapin/badge.svg?branch=master&service=github)](https://coveralls.io/github/moul/sapin?branch=master)
 
 ## Demo
 
@@ -15,14 +15,14 @@ http://sapin-as-a-service.appspot.com/
 ```console
 $ sapin --presents --size=5 --star --garlands=4 --color
 ```
-![](https://raw.githubusercontent.com/moul/go-sapin/master/assets/sapin-size5-balls4-star-garlands4-color.png)
+![](https://raw.githubusercontent.com/moul/sapin/master/assets/sapin-size5-balls4-star-garlands4-color.png)
 
 ---
 
 ```console
 $ sapin --size=3 --balls=4 --star --emoji
 ```
-![](https://raw.githubusercontent.com/moul/go-sapin/master/assets/sapin-size3-balls4-star-emoji.png)
+![](https://raw.githubusercontent.com/moul/sapin/master/assets/sapin-size3-balls4-star-emoji.png)
 
 ---
 
@@ -116,7 +116,7 @@ Help Options:
 ## Install
 
 ```console
-$ go get github.com/moul/go-sapin/cmd/sapin
+$ go get github.com/moul/sapin/cmd/sapin
 ```
 
 ## License
