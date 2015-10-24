@@ -1,4 +1,5 @@
-SOURCES = sapin.go bonus.go
+SOURCES :=	$(shell find . -name "*.go")
+VERSION :=	$(shell cat .goxc.json | jq -c .PackageVersion | sed 's/"//g')
 
 all: sapin sapin.js
 
@@ -62,3 +63,25 @@ cmd/appspot/static/terminal.css:
 .PHONY: release
 release:
 	goxc
+
+
+.PHONY: build-docker
+build-docker: contrib/docker/.docker-container-built
+	@echo "now you can 'docker push moul/sapin'"
+
+
+dist/latest/sapin_latest_linux_386: $(SOURCES)
+	mkdir -p dist
+	rm -f dist/latest
+	(cd dist; ln -s $(VERSION) latest)
+	goxc -bc="linux,386" xc
+	cp dist/latest/sapin_$(VERSION)_linux_386 $@
+
+
+contrib/docker/.docker-container-built: dist/latest/sapin_latest_linux_386
+	cp $< contrib/docker/sapin
+	docker build -t moul/sapin:latest contrib/docker
+	docker tag -f moul/sapin:latest moul/sapin:$(shell echo $(VERSION) | sed 's/\+/plus/g')
+	docker run -it --rm moul/sapin --size=1
+	docker inspect --type=image --format="{{ .Id }}" moul/sapin > $@.tmp
+	mv $@.tmp $@
