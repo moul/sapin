@@ -5,6 +5,7 @@
 [![](https://img.shields.io/badge/appspot-sapin--as--a--service-blue.svg)](http://sapin-as-a-service.appspot.com/)
 [![Build Status](https://travis-ci.org/moul/sapin.svg?branch=master)](https://travis-ci.org/moul/sapin)
 [![Coverage Status](https://coveralls.io/repos/moul/sapin/badge.svg?branch=master&service=github)](https://coveralls.io/github/moul/sapin?branch=master)
+[![](https://badge.imagelayers.io/moul/sapin:latest.svg)](https://imagelayers.io/?images=moul/sapin:latest)
 
 ## Demo
 
@@ -118,6 +119,40 @@ Help Options:
 ```console
 $ go get github.com/moul/sapin/cmd/sapin
 ```
+
+## Run with docker
+
+```console
+$ docker run moul/sapin
+docker run moul/sapin --size=4 --garlands=2 --star --color --presents
+              #
+             ***
+            *****
+           *****~~
+            **~~~
+           *~~~***
+          ~~~******
+         ~~*********
+        *************
+         ***********
+        *************
+       ***************
+      *@***************
+     ***@************@**
+    *@****************@**
+      @****************
+     *******************
+    *****@***************
+   ***********************
+  ********@****************
+ *****************@*********
+*****************************
+            |||||
+            |||||   _8_8_
+            |||||  |  |  |_8_
+            |||||  |__|__|___|
+```
+
 
 ## License
 
