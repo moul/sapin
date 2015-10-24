@@ -57,3 +57,8 @@ goapp_deploy: cmd/appspot/static/terminal.css
 
 cmd/appspot/static/terminal.css:
 	wget https://raw.githubusercontent.com/buildkite/terminal/master/assets/terminal.css -O $@
+
+
+.PHONY: release
+release:
+	goxc
