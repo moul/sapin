@@ -1,3 +1,9 @@
+contrib/docker/.docker-container-built.tmp
+contrib/docker/sapin
+
+/dist
+.DS_Store
+
 profile.out
 /sapin
 /sapin.js*
