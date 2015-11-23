@@ -2,18 +2,16 @@
 	"ImportPath": "github.com/moul/sapin",
 	"GoVersion": "go1.5.1",
 	"Packages": [
-		"./..."
+		"github.com/moul/sapin",
+		"github.com/moul/sapin/cmd/appspot",
+		"github.com/moul/sapin/cmd/sapin",
+		"github.com/moul/sapin/cmd/sapinjs"
 	],
 	"Deps": [
 		{
 			"ImportPath": "github.com/buildkite/terminal",
 			"Comment": "v3.0.3",
 			"Rev": "32c897172292630282de10c1da3fa879f0a953e7"
-		},
-		{
-			"ImportPath": "github.com/codegangsta/cli",
-			"Comment": "1.2.0-179-g0302d39",
-			"Rev": "0302d3914d2a6ad61404584cdae6e6dbc9c03599"
 		},
 		{
 			"ImportPath": "github.com/gorilla/schema",
@@ -34,8 +32,8 @@
 		},
 		{
 			"ImportPath": "github.com/smartystreets/assertions",
-			"Comment": "1.5.0-397-gac6b6f6",
-			"Rev": "ac6b6f68ca3d6ac00a360d0fad0c844859ad131b"
+			"Comment": "1.5.0-405-g01fedaa",
+			"Rev": "01fedaa993c0a9f9aa55111501cd7c81a49e812e"
 		},
 		{
 			"ImportPath": "github.com/smartystreets/goconvey/convey",
