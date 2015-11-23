@@ -1,5 +1,9 @@
 SOURCES :=	$(shell find . -name "*.go")
 VERSION :=	$(shell cat .goxc.json | jq -c .PackageVersion | sed 's/"//g')
+GOENV ?=	GO15VENDOREXPERIMENT=1
+GO ?=		$(GOENV) go
+GODEP ?=	$(GOENV) godep
+
 
 all: sapin sapin.js
 
@@ -10,34 +14,38 @@ build: sapin
 
 .PHONY: install
 install:
-	go install ./cmd/sapin
+	$(GO) install ./cmd/sapin
 
 
 .PHONY: test
 test:
-	go get -t ./...
-	go test -v .
+	$(GO) get -t .
+	$(GO) test -v .
+
+
+.PHONY: godep-save
+godep-save:
+	$(GODEP) save $(shell go list ./... | grep -v /vendor/)
 
 
 .PHONY: cover
 cover:
 	rm -rf profile.out
-	go test -covermode=count -coverpkg=. -coverprofile=profile.out .
+	$(GO) test -covermode=count -coverpkg=. -coverprofile=profile.out .
 
 
 .PHONY: convey
 convey:
-	go get github.com/smartystreets/goconvey
+	$(GO) get github.com/smartystreets/goconvey
 	goconvey -cover -port=9031 -workDir="$(shell realpath .)" -depth=-1
 
 
 sapin: ./cmd/sapin/main.go $(SOURCES)
-	go get ./...
-	go build -o $@ ./cmd/sapin
+	$(GO) build -o $@ ./cmd/sapin
 
 
 sapin.js: ./cmd/sapinjs/main.go $(SOURCES)
-	go get github.com/gopherjs/gopherjs
+	$(GO) get github.com/gopherjs/gopherjs
 	gopherjs build -o $@ ./cmd/sapinjs/main.go
 
 
