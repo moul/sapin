@@ -4,7 +4,7 @@ class Sapin < Formula
   desc "Draw a beautiful christmas tree in ascii"
   homepage "https://github.com/moul/sapin"
   url "https://github.com/moul/sapin/archive/v1.1.0.tar.gz"
-  sha256 "821bd87def594f98ffd818e1c54c305c3d97fbca2176ae145c62f0978f4fd3ca"
+  sha256 "170100073a96a306964b3985bd2d22124acaca23283a591fa7ad118e9a38c1cc"
 
   head "https://github.com/moul/sapin.git"
 

@@ -19,6 +19,7 @@ install:
 
 .PHONY: test
 test:
+	$(GODEP) restore
 	$(GO) get -t .
 	$(GO) test -v .
 
